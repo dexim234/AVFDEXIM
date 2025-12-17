@@ -100,10 +100,37 @@ mobileMenuOverlay.addEventListener('click', (e) => {
 });
 
 
-// Handle mobile navigation links
+// Handle mobile navigation links with scroll prevention
 const allMobileLinks = document.querySelectorAll('.mobile-nav-link');
 console.log('Found mobile links:', allMobileLinks.length);
 allMobileLinks.forEach((link, index) => {
+    let touchStartY = 0;
+    let isScrolling = false;
+
+    const handleTouchStart = function(e) {
+        touchStartY = e.touches[0].clientY;
+        isScrolling = false;
+    };
+
+    const handleTouchMove = function(e) {
+        const touchCurrentY = e.touches[0].clientY;
+        const deltaY = Math.abs(touchCurrentY - touchStartY);
+
+        // If moved more than 10px, consider it scrolling
+        if (deltaY > 10) {
+            isScrolling = true;
+        }
+    };
+
+    const handleTouchEnd = function(e) {
+        // Small delay to allow touchmove to set isScrolling
+        setTimeout(() => {
+            if (!isScrolling) {
+                handleClick.call(this, e);
+            }
+        }, 10);
+    };
+
     const handleClick = function(e) {
         console.log('Mobile link clicked:', index, this.getAttribute('href'));
         e.preventDefault();
@@ -120,8 +147,10 @@ allMobileLinks.forEach((link, index) => {
         }, 400);
     };
 
+    link.addEventListener('touchstart', handleTouchStart, { passive: false });
+    link.addEventListener('touchmove', handleTouchMove, { passive: false });
+    link.addEventListener('touchend', handleTouchEnd, { passive: false });
     link.addEventListener('click', handleClick);
-    link.addEventListener('touchstart', handleClick, { passive: false });
 });
 
 // Close menu on escape key

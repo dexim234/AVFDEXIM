@@ -3336,6 +3336,40 @@ body {
     }
 }
 
+/* Tablet menu fix - hide nav actions and show burger */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .nav-actions {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    /* Tablet-specific mobile menu */
+    .mobile-menu {
+        width: 350px;
+        max-width: 80vw;
+    }
+
+    .mobile-nav-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+        border-radius: 18px;
+    }
+
+    .mobile-nav-link {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(78, 110, 73, 0.1);
+        user-select: none;
+        -webkit-user-select: none;
+    }
+}
+
 @media (min-width: 1440px) {
     .category-title {
         font-size: 28px;
@@ -3362,6 +3396,46 @@ body {
     .logo {
         font-size: 24px;
     }
+
+    /* Mobile menu improvements */
+    .mobile-menu {
+        width: 300px;
+        max-width: 90vw;
+        max-height: 100vh;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        overscroll-behavior-y: contain;
+    }
+
+    .mobile-nav-menu {
+        padding: 24px 20px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        overscroll-behavior-y: contain;
+    }
+
+    .mobile-nav-link {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(78, 110, 73, 0.1);
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .mobile-nav-btn {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+        border-radius: 16px !important;
+        margin-bottom: 8px;
+    }
+
+    .mobile-nav-actions {
+        padding: 16px 20px;
+        margin-top: 20px;
+    }
+}
 
     .hero-content {
         padding: 32px;
@@ -3466,6 +3540,45 @@ body {
         height: 40px;
         font-size: 14px;
     }
+
+    /* Extra small mobile menu improvements */
+    .mobile-menu {
+        width: 280px;
+        max-width: 95vw;
+        touch-action: pan-y;
+        overscroll-behavior-y: contain;
+    }
+
+    .mobile-menu-header {
+        padding: 20px 24px;
+    }
+
+    .mobile-nav-menu {
+        padding: 20px 16px;
+        max-height: calc(100vh - 180px);
+        touch-action: pan-y;
+        overscroll-behavior-y: contain;
+    }
+
+    .mobile-nav-link {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(78, 110, 73, 0.1);
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .mobile-nav-btn {
+        padding: 6px 10px !important;
+        font-size: 12px !important;
+        border-radius: 12px !important;
+        margin-bottom: 6px;
+    }
+
+    .mobile-nav-actions {
+        padding: 12px 16px;
+        margin-top: 16px;
+    }
+}
 
     .nav-menu {
         gap: 16px;
